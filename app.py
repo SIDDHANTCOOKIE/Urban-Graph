@@ -29,7 +29,11 @@ def load_model():
     model.eval()
     return model
 
-model = load_model()
+model = None
+try:
+    model = load_model()
+except Exception as e:
+    st.error(f"Failed to load model: {e}")
 
 st.sidebar.header("Simulation Settings")
 num_nodes = st.sidebar.slider("Number of Intersections", 10, 100, 30)
